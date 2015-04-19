@@ -3,3 +3,4 @@ project/project/target
 target
 *.orig
 workspace.xml
+.idea/workspace.xml
