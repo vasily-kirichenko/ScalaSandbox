@@ -21,14 +21,14 @@ object ParallelReduce {
       }
     }
 
-    if (a.isEmpty)
-      throw new Exception("Sequence contains no elements")
-    else
-      Await.result(reduceRec(a), Duration.Inf)
+    a match {
+      case Array() => throw new Exception("Sequence contains no elements")
+      case _ => Await.result(reduceRec(a), Duration.Inf)
+    }
   }
 
   def run() = {
-    val a = Array.range(1, 50000000)
+    val a = Array.range(1, 5000000)
     Util.time { reduce((x: Int, y: Int) => x + y, a) }
   }
 }
